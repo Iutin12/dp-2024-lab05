@@ -1,6 +1,12 @@
 import unittest
-from programs.handlers import OrderHandler, StockCheckHandler, PaymentProcessorHandler, DeliveryHandler
-from programs.commands import OrderProcessingCommand, StockCheckCommand, PaymentProcessingCommand, DeliveryCommand
+from handlers.stockcheckhandler import StockCheckHandler
+from handlers.paymentprocessorhandler import PaymentProcessorHandler
+from handlers.deliveryhandler import DeliveryHandler
+from handlers.orderhandler import OrderHandler
+from commands.orderprocessingcommand import OrderProcessingCommand
+from commands.stockcheckcommand import StockCheckCommand
+from commands.paymentprocessingcommand import PaymentProcessingCommand
+from commands.deliverycommand import DeliveryCommand
 from programs.exceptions import OutOfStockError, PaymentProcessingError
 
 class TestOrderProcessing(unittest.TestCase):
@@ -20,7 +26,6 @@ class TestOrderProcessing(unittest.TestCase):
         self.payment_processor_handler = PaymentProcessorHandler()
         self.delivery_handler = DeliveryHandler()
 
-        # Устанавливаем цепочку обработчиков
         self.order_handler.set_next(self.stock_check_handler).set_next(self.payment_processor_handler).set_next(self.delivery_handler)
 
     def test_order_successful(self) -> None:
