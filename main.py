@@ -1,5 +1,8 @@
-from programs.handlers import OrderHandler, StockCheckHandler, PaymentProcessorHandler, DeliveryHandler
-from programs.commands import OrderProcessingCommand
+from handlers.orderhandler import OrderHandler
+from handlers.stockcheckhandler import StockCheckHandler
+from handlers.paymentprocessorhandler import PaymentProcessorHandler
+from handlers.deliveryhandler import DeliveryHandler
+from commands.orderprocessingcommand import OrderProcessingCommand
 from programs.exceptions import OutOfStockError, PaymentProcessingError, DeliveryError
 
 order: dict = {
